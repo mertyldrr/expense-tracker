@@ -4,9 +4,10 @@ import Card from './Card';
 import './Expenses.css'
 
 const Expenses = ({ items }) => {
-  const allExpenses = items.map((item) => {
+  const allExpenses = items.map((item, index) => {
     return (
-      <ExpenseItem 
+      <ExpenseItem
+        key={index} 
         date={item.date}
         amount={item.amount}
         title={item.title}

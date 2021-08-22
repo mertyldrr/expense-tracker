@@ -1,23 +1,61 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './ExpenseForm.css';
 
-const ExpenseForm = () => {
+const ExpenseForm = ({ expenses, setExpenses }) => {
+
+  const [title, setTitle] = useState("");
+  const [amount, setAmount] = useState("");
+  const [date, setDate] = useState("");
+
+  // Alternative version with single state
+  // const [singleState, setSingleState] = useState({
+  //   title: "",
+  //   amount: "",
+  //   date: ""
+  // });
+
+  const titleChangeHandler = (e) => {
+    setTitle(e.target.value);
+  }
+
+  const amountChangeHandler = (e) => {
+    setAmount(e.target.value);
+  }
+
+  const dateChangeHandler = (e) => {
+    setDate(e.target.value);
+  }
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    const newExpense = {
+      title: title, 
+      amount: amount, 
+      date: new Date(date)
+    }
+    setExpenses([...expenses, newExpense])
+    // To clear inputs after form submission, added value attribute to each input
+    setTitle("");
+    setAmount("");
+    setDate("");
+  }
+
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
-          <input type="text" />
+          <input type="text" value={title} onChange={titleChangeHandler} />
         </div>
 
         <div className="new-expense__control">
           <label>Amount</label>
-          <input type="number" min="0.01" step="0.01" />
+          <input type="number" value={amount} onChange={amountChangeHandler} min="0.01" step="0.01" />
         </div>
 
         <div className="new-expense__control">
           <label>Date</label>
-          <input type="date" min="2021-01-01" max="2023-12-31" />
+          <input type="date" value={date} onChange={dateChangeHandler} min="2021-01-01" max="2023-12-31" />
         </div>
       </div>
       <div className="new-expense__actions">
