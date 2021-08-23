@@ -6,14 +6,13 @@ const App = () => {
 
   const [expenses, setExpenses] = useState([]);
 
-
   return (
     <div>
-      <NewExpense 
+      <NewExpense
         expenses={expenses}
-        setExpenses={setExpenses} 
+        setExpenses={setExpenses}
       />
-      <Expenses items={expenses}/>
+      <Expenses items={expenses} />
     </div>
   );
 }

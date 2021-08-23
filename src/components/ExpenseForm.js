@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './ExpenseForm.css';
 
 const ExpenseForm = ({ expenses, setExpenses }) => {
@@ -29,11 +29,13 @@ const ExpenseForm = ({ expenses, setExpenses }) => {
   const submitHandler = (e) => {
     e.preventDefault();
     const newExpense = {
-      title: title, 
-      amount: amount, 
+      title: title,
+      amount: amount,
       date: new Date(date)
     }
-    setExpenses([...expenses, newExpense])
+    setExpenses((prevState) => {
+      return [newExpense, ...prevState]
+    })
     // To clear inputs after form submission, added value attribute to each input
     setTitle("");
     setAmount("");
