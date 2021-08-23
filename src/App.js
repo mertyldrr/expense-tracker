@@ -9,7 +9,6 @@ const App = () => {
   return (
     <div>
       <NewExpense
-        expenses={expenses}
         setExpenses={setExpenses}
       />
       <Expenses items={expenses} />
