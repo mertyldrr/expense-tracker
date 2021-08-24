@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import NewExpenseForm from './ExpenseForm';
-import './NewExpense.css';
+import styles from './NewExpense.module.css';
 
 const NewExpense = ({ setExpenses }) => {
 
@@ -12,7 +12,7 @@ const NewExpense = ({ setExpenses }) => {
 
   return (
     <div>
-      <div className="new-expense">
+      <div className={styles["new-expense"]}>
         {!clickFlag && <button onClick={onClickHandler}>Add New Expense</button>}
         {clickFlag && <NewExpenseForm setClickFlag={setClickFlag} setExpenses={setExpenses} />}
       </div>
